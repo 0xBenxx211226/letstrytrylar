@@ -1,0 +1,40 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.12;
+
+import"./ERC20.sol";
+
+contract token is ERC20{
+    uint32 public time = uint32(block.timestamp); 
+    uint112 public constant max_token_number = 110000000 ether;
+    uint112 public constant all_claim = max_token_number;
+    uint16 the_number_of_claim = 0
+    mapping(address=> bool ) public is_claim;
+    
+    constructor() ERC20("Effy Token","EFFY"){
+        _mint(0xC423a08F039ba977AcC7C08d19516Fd12561C28b,max_token_number);
+    }
+
+    function claim() public{
+        if(block.timestamp - time <= 365 days && return_is_claim(msg.sender) == false){
+            the_number_of_claim += 1;
+            is_claim[msg.sender] = ture; 
+            _mint(msg.sender,return_claim_number())
+        }
+    }
+
+    function return_claim_number() public returns(uint104){
+        uint112 claim)number;
+        if(the_number_of_claim <= 200){
+            claim_number_of_claim = all_claim /100*20/2000*1
+        }
+        else if(the_number_of_claim > 200 && the_number_of_claim<=2000 && the_number_of_claim<=2000)
+            all_claim/100*20/20000*1
+
+        return claim_number
+    }
+
+    function return_is_claim(address _address) public view returns(bool){
+        return is_claim[_address];
+    }
+}
